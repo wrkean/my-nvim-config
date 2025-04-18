@@ -24,16 +24,7 @@ return {
       })
 
       -- Configure clangd (C/C++)
-      lspconfig.clangd.setup({
-        capabilities = capabilities,
-        on_attach = function(_, bufnr)
-          vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-          local opts = { noremap=true, silent=true, buffer=bufnr }
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-        end,
-      })
+      lspconfig.clangd.setup({ capabilities = capabilities })
 
       -- Configure lua_ls (Lua)
       lspconfig.lua_ls.setup({
@@ -52,9 +43,6 @@ return {
 
       -- Configure rust_analyzer (Rust)
       lspconfig.rust_analyzer.setup({
-        on_attach = function(_, bufnr)
-          vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-        end,
         settings = {
           ["rust-analyzer"] = {
             cargo = { allFeatures = true },
@@ -70,7 +58,10 @@ return {
       lspconfig.asm_lsp.setup({ capabilities = capabilities })
 
       -- Configure zls (Zig)
-      lspconfig.zls.setup({ capabilities = capabilities })
+      lspconfig.zls.setup({
+        capabilities = capabilities,
+        cmd = { "zls" },
+      })
     end
   },
 }

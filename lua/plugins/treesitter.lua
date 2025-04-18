@@ -6,7 +6,8 @@ return {
         "cpp", "c",
         "rust", "python",
         "lua", "json",
-        "bash", "markdown"
+        "bash", "markdown",
+        "zig"
     },
     highlight = { enable = true },
     indent = { enable = true }
