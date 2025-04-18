@@ -68,6 +68,9 @@ return {
 
       -- Configure asm_lsp (Assembly)
       lspconfig.asm_lsp.setup({ capabilities = capabilities })
+
+      -- Configure zls (Zig)
+      lspconfig.zls.setup({ capabilities = capabilities })
     end
   },
 }
